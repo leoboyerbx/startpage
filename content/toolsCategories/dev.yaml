@@ -2,5 +2,7 @@ slug: dev
 name: Dev
 icon: fas fa-laptop-code
 links:
-  - url: https://github.com/
+  - url: https://htaccess.madewithlove.be/
     title: .htaccess tester
+  - url: https://repl.it/
+    title: Repl.it - The collaborative browser based IDE
