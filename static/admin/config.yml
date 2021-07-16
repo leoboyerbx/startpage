@@ -25,4 +25,4 @@ collections:
         fields:
           - { label: URL, name: url, widget: string }
           - { label: String, name: title, widget: string }
-          - { label: Icon, name: icon, widget: image }
+          - { label: Icon, name: icon, widget: image, required: false }
