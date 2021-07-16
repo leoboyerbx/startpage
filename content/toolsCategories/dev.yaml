@@ -4,5 +4,6 @@ icon: fas fa-laptop-code
 links:
   - url: https://htaccess.madewithlove.be/
     title: .htaccess tester
+    icon: https://htaccess.madewithlove.be/favicon-32x32.png
   - url: https://repl.it/
     title: Repl.it - The collaborative browser based IDE
