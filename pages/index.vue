@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import getFavicons from 'get-website-favicon'
 import Tools from '~/components/Tools/Tools'
 export default {
   components: {
@@ -24,6 +25,22 @@ export default {
   },
   async asyncData(ctx) {
     const categories = await ctx.$content('toolsCategories').fetch()
+    for (const category of categories) {
+      for (const link of category.links) {
+        if (!link.icon) {
+          const faviconData = await getFavicons(link.url)
+          if (faviconData.icons.length) {
+            let icon = faviconData.icons[0]
+            for (let i = 1; i < faviconData.icons.length; i++) {
+              if (icon.rank > faviconData.icons[i].rank) {
+                icon = faviconData.icons[i]
+              }
+            }
+            link.icon = icon.src
+          }
+        }
+      }
+    }
     return {
       categories
     }
