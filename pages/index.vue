@@ -11,7 +11,7 @@
 <!--        <Grepper :query="searchQuery" @hasAnswers="hasAnswers = $event" />-->
         <Tools :categories="categories" />
       </main>
-<!--      <Settings class="z-20" />-->
+      <Settings class="z-20" />
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     Tools
   },
   async asyncData(ctx) {
-    const categories = await ctx.$content('/toolsCategories').fetch()
+    const categories = await ctx.$content('toolsCategories').fetch()
     return {
       categories
     }
@@ -32,6 +32,11 @@ export default {
     searchQuery: '',
     hasAnswers: false
   }),
+  head() {
+    return {
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+    };
+  },
   computed: {
     dark () {
       return this.$store.getters.dark

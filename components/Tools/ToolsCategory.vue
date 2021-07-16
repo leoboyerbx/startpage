@@ -13,7 +13,7 @@
           class="flex items-center p-2 text-gray-800 dark:text-gray-300"
           :title="link.title"
         >
-          <img :src="link.icon ? apiEndPoint + link.icon.url : '/assets/globe.svg'" alt="fav" style="width: 16px; height: 16px;" class="ml-2">
+          <img :src="link.icon ? apiEndPoint + link.icon.url : require('~/assets/img/globe.svg')" alt="fav" style="width: 16px; height: 16px;" class="ml-2">
           <span class="truncate mx-2">{{ link.title }}</span>
         </a>
       </div>
