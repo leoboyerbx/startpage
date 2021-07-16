@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'tools-categories'
+    label: 'Tools Categories'
+    folder: 'content/toolsCategories'
+    create: true
+#    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Icon', name: 'icon', widget: 'string' }
+      - label: Links
+        name: links
+        widget: list
+        fields:
+          - { label: URL, name: url, widget: string }
+          - { label: String, name: title, widget: string }

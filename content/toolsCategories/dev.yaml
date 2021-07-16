@@ -1,0 +1,5 @@
+name: Dev
+icon: fas fa-laptop-code
+links:
+  - url: https://htaccess.madewithlove.be/
+    title: .htaccess tester
