@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Content Manager</title>
   <!-- Include the script that enables Netlify Identity on this page. -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -10,5 +10,87 @@
 <body>
 <!-- Include the script that builds the page and powers Netlify CMS -->
 <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+<script>
+  async function getFavicon(url) {
+    try {
+      const res = await fetch('/.netlify/functions/getFavicon?url=' + url).then(res => res.json())
+      return res.iconUrl
+    } catch (e) {
+      console.log('image load fail silently')
+    }
+  }
+
+  const URLControl = createClass({
+    getInitialState() {
+      this.updateImage()
+      return {imageUrl: './img/globe.svg'}
+    },
+    handleChange: function (e) {
+      const url = e.target.value
+      this.props.onChange(url);
+      this.updateImage()
+    },
+
+    updateImage: async function () {
+      const favicon = await getFavicon(this.props.value)
+      this.setState({
+        imageUrl: favicon || './img/globe.svg'
+      })
+    },
+
+    render: function () {
+      const separator = this.props.field.get('separator', ', ');
+      const value = this.props.value;
+      return h('div', {},
+        h('input', {
+          id: this.props.forID,
+          className: this.props.classNameWrapper,
+          type: 'text',
+          value,
+          onChange: this.handleChange,
+        }),
+        h('img', {src: this.state.imageUrl, style: {width: 128, height: 128}})
+      )
+    },
+  });
+  CMS.registerWidget('urlpreview', URLControl)
+
+
+  // const ToolPreview = createClass({
+  //   render: function() {
+  //     const entry = this.props.entry;
+  //
+  //     return h('div', {},
+  //
+  //       // This is a static header that would only be rendered once for the entire list
+  //       h('h1', {}, 'Sites'),
+  //
+  //       // Here we provide a simple mapping function that will be applied to each
+  //       // object in the array of authors
+  //       this.props.widgetsFor('links').map((link, index) => {
+  //         return h('div', {key: index},
+  //           h('hr', {}),
+  //           // this._renderLink(link)
+  //           // author.getIn(['widgets', 'description'])
+  //         );
+  //       })
+  //     );
+  //   },
+  //   _renderLink: async function (link) {
+  //     const url = link.getIn(['data', 'url'])
+  //     const title = link.getIn(['data', 'title'])
+  //
+  //     const icon = link.getIn(['data', 'icon'])
+  //     console.log('icon')
+  //
+  //     return h('a', { href: url, style: {display: 'flex'} },
+  //       title,
+  //       h('img')
+  //     )
+  //   }
+  // });
+  //
+  // CMS.registerPreviewTemplate("tools-categories", ToolPreview);
+</script>
 </body>
 </html>
