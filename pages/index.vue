@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import getFavicons from 'get-website-favicon'
 import Tools from '~/components/Tools/Tools'
+import getFavicon from '~/helpers/getFavicon'
 export default {
   components: {
     Tools
@@ -28,16 +28,7 @@ export default {
     for (const category of categories) {
       for (const link of category.links) {
         if (!link.icon) {
-          const faviconData = await getFavicons(link.url)
-          if (faviconData.icons.length) {
-            let icon = faviconData.icons[0]
-            for (let i = 1; i < faviconData.icons.length; i++) {
-              if (icon.rank > faviconData.icons[i].rank) {
-                icon = faviconData.icons[i]
-              }
-            }
-            link.icon = icon.src
-          }
+          link.icon = await getFavicon(link.url)
         }
       }
     }
