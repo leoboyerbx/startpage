@@ -4,11 +4,11 @@
       <header class="mx-auto mt-10 pt-10 content-center relative z-10">
         <h1 class="font-bold text-center w-auto text-yeleo text-8xl mb-10 dark:text-yeleo-light">...start !</h1>
         <section class="search-wrapper">
-<!--          <Search @update="searchQuery = $event; hasAnswers = false" :has-answers="hasAnswers" />-->
+          <Search :has-answers="hasAnswers" :grep-loading="isGrepperLoading" :tools="tools" @update="searchQuery = $event; hasAnswers = false" />
         </section>
       </header>
       <main class="my-10">
-<!--        <Grepper :query="searchQuery" @hasAnswers="hasAnswers = $event" />-->
+        <Grepper :query="searchQuery" @grep-loading="isGrepperLoading = $event" @hasAnswers="hasAnswers = $event" />
         <Tools :categories="categories" />
       </main>
       <Settings class="z-20" />
@@ -20,11 +20,13 @@
 import '@/assets/fontawesome/css/all.min.css';
 
 import Tools from '~/components/Tools/Tools'
+import Search from '~/components/Search'
 import getFavicon from '~/helpers/getFavicon'
 
 export default {
   components: {
-    Tools
+    Tools,
+    Search
   },
   async asyncData(ctx) {
     const categories = await ctx.$content('toolsCategories').fetch()
@@ -43,7 +45,8 @@ export default {
   },
   data: () => ({
     searchQuery: '',
-    hasAnswers: false
+    hasAnswers: false,
+    isGrepperLoading: false,
   }),
   head() {
     return {
@@ -53,6 +56,11 @@ export default {
   computed: {
     dark () {
       return this.$store.getters.dark
+    },
+    tools() {
+      const tools = []
+      this.categories.forEach(category => category.links.forEach(link => tools.push(link)))
+      return tools
     }
   }
 }

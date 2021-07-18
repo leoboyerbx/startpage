@@ -1,5 +1,5 @@
 <template>
-  <form class="search-bar"
+  <form class="search-bar search-input"
         @submit.prevent="submitQuery(queryToSubmit)"
         @keydown.down.prevent="nextSuggestion"
         @keydown.up.prevent="prevSuggestion"
@@ -16,12 +16,13 @@
         class="mx-4 flex-grow focus:outline-none pt-2 pb-3 text-gray-800 font-light"
         @input="updateQuery"
       >
-      <div class="mr-5 text-sm text-gray-300 hidden pointer-events-none select-none sm:block">
+      <div class="mr-5 text-sm text-gray-300 hidden pointer-events-none select-none sm:block transition duration-200" :class="{'translate-x-5': grepLoading}">
         <span class=" transition-all duration-200" :class="{ 'text-yeleo': query.length > 0 }">
           <span class="keyhint transition-all duration-200" :class="{ 'border-transparent bg-yeleo text-white': query.length > 0 }">ENTER</span> to search,
         </span>
-        <span class=" transition-all duration-200" :class="{ 'text-yeleo': hasAnswers }">
+        <span class="transition-all duration-200 ml-1" :class="{ 'text-yeleo': hasAnswers }">
           <span class="keyhint transition-all duration-200" :class="{ 'border-transparent bg-yeleo text-white': hasAnswers }">ESC</span> to Grepp'
+          <i class="fas fa-spinner-third animate-spin transition duration-100 ml-1" :class="{ 'opacity-0': !grepLoading, 'delay-200': grepLoading }"></i>
         </span>
       </div>
     </section>
@@ -33,7 +34,7 @@
          @click="submitQuery(suggestion)"
          @mouseover="selectedSuggestion = i"
       >
-        <img v-if="suggestion.icon" :src="apiEndPoint + suggestion.icon.url" class="ml-5" style="width: 16px; height: 16px;" alt="s">
+        <img v-if="suggestion.isTool" :src="getIconForLink(suggestion)" class="ml-5" style="width: 16px; height: 16px;" alt="s">
         <i v-else class="fas fa-search ml-5 fa-sm"></i>
         <span class="text-gray-900 mx-4 py-2 font-light" v-html="formatSuggestion(suggestion.title)"></span>
       </a>
@@ -48,6 +49,11 @@ export default {
   name: 'Search',
   props: {
     hasAnswers: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    grepLoading: {
       type: Boolean,
       required: false,
       default: false
@@ -92,8 +98,8 @@ export default {
     },
     submitQuery (query) {
       let url
-      if (query.URL) {
-        url = query.URL
+      if (query.url) {
+        url = query.url
       } else {
         url = `https://www.google.com/search?q=${query.title}`
       }
@@ -135,7 +141,7 @@ export default {
       if (this.query.length) {
         this.suggestions = this.tools.filter(link => {
           return (link.title.toLowerCase().includes(this.query.toLowerCase()))
-        })
+        }).map(link => { link.isTool = true; return link; })
 
         googleSuggestApi.getSuggestions(this.query).then(suggestions => {
           suggestions.forEach(suggestion => {
@@ -151,6 +157,9 @@ export default {
         this.suggestions = []
         this.baseQuery = ''
       }
+    },
+    getIconForLink(link) {
+        return link.customIcon || link.icon || (require(this.$store.state.darkTheme ? '~/assets/img/globe-white.svg' : '~/assets/img/globe.svg'))
     }
   }
 }
@@ -192,4 +201,15 @@ export default {
   box-shadow:  0 0 25px rgba(0, 0, 0, 0.15);
   border-color: transparent;
 }
+
+.grep-loading {
+  animation: loading-grep .4s alternate infinite;
+}
+
+@keyframes loading-grep {
+  to {
+    @apply border-yeleo-light text-yeleo
+  }
+}
+
 </style>

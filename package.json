@@ -15,7 +15,9 @@
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
     "get-website-favicon": "^0.0.7",
+    "lodash": "^4.17.21",
     "nuxt": "^2.15.7",
+    "prismjs": "^1.24.1",
     "vue-clickaway": "^2.2.2"
   },
   "devDependencies": {
