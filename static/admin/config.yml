@@ -6,25 +6,25 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'tools-categories'
-    label: 'Tools Categories'
-    folder: 'content/toolsCategories'
-    format: 'yaml'
-    extension: 'yaml'
-    create: true
-    editor:
-      preview: false
-    fields:
-      - { label: 'Slug', name: 'slug', widget: 'string' }
-      - { label: 'Name', name: 'title', widget: 'string' }
-      - { label: 'Icon', name: 'icon', widget: 'string' }
-      - label: Links
-        name: links
-        widget: list
-        fields:
-          - { label: String, name: title, widget: string }
-          - { label: URL, name: url, widget: urlpreview }
-          - { label: Icon, name: icon, widget: image, required: false }
+#  - name: 'tools-categories'
+#    label: 'Tools Categories'
+#    folder: 'content/toolsCategories'
+#    format: 'yaml'
+#    extension: 'yaml'
+#    create: true
+#    editor:
+#      preview: false
+#    fields:
+#      - { label: 'Slug', name: 'slug', widget: 'string' }
+#      - { label: 'Name', name: 'title', widget: 'string' }
+#      - { label: 'Icon', name: 'icon', widget: 'string' }
+#      - label: Links
+#        name: links
+#        widget: list
+#        fields:
+#          - { label: String, name: title, widget: string }
+#          - { label: URL, name: url, widget: urlpreview }
+#          - { label: Icon, name: icon, widget: image, required: false }
 
   - label: "Tools settings"
     name: "tools"
