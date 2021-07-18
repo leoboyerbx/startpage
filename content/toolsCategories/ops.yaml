@@ -1,5 +1,4 @@
-slug: ops
-name: Ops
+title: Ops
 icon: fad fa-server
 links:
   - title: Crontab.guru - The cron schedule expression editor

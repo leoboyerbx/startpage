@@ -1,7 +1,7 @@
 <template>
   <article class="w-full">
     <header class="py-3 px-4 border-b border-yeleo dark:border-yeleo-light text-gray-700 dark:text-gray-300">
-      <h3 class="text-xl"><i :class="category.icon" class="mr-2 fa-lg inline-block transform scale-75"></i>{{ category.name }}
+      <h3 class="text-xl"><i :class="category.icon" class="mr-2 fa-lg inline-block transform scale-75"></i>{{ category.title }}
       </h3>
     </header>
     <main ref="listWrapper" :style="{ maxHeight: maxHeight + 'px' }"

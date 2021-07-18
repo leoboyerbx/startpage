@@ -12,12 +12,11 @@ collections:
     format: 'yaml'
     extension: 'yaml'
     create: true
-    slug: '{{slug}}'
     editor:
       preview: false
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
-      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Name', name: 'title', widget: 'string' }
       - { label: 'Icon', name: 'icon', widget: 'string' }
       - label: Links
         name: links
