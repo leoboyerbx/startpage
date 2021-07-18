@@ -1,0 +1,68 @@
+categories:
+  - title: Dev
+    icon: fad fa-laptop-code
+    links:
+      - title: DevTools.best - Most frequent used dev tools
+        url: https://devtools.best/
+      - title: Repl.it - The collaborative browser based IDE
+        url: https://repl.it/
+      - title: CODELF - search for variable name
+        url: https://unbug.github.io/codelf/
+      - title: Semver checker
+        url: https://jubianchi.github.io/semver-check/
+      - title: BundlePhobia ❘ cost of adding a npm package
+        url: https://bundlephobia.com/
+      - title: Regex101
+        url: https://regex101.com/
+      - title: JSON Editor Online
+        url: https://jsoneditoronline.org/
+      - title: CodePen
+        url: https://codepen.io/
+      - title: CodeSandbox
+        url: https://codesandbox.io/
+      - title: Learn X in Y Minutes
+        url: https://learnxinyminutes.com/
+      - title: Devhints — TL;DR for developer documentation
+        url: https://devhints.io/
+      - title: DevDocs
+        url: https://devdocs.io/
+      - title: Refactoring Guru
+        url: https://refactoring.guru/
+  - title: Ops
+    icon: fad fa-server
+    links:
+      - title: Crontab.guru - The cron schedule expression editor
+        url: https://crontab.guru/
+      - title: explainshell.com - Explain a shell command
+        url: https://explainshell.com/
+      - title: ".htaccess tester"
+        url: https://htaccess.madewithlove.be/
+
+  - title: Fonts
+    icon: fad fa-font
+    links:
+      - title: Transfonter - @font-face generator
+        url: https://transfonter.org/
+      - title: Google Fonts
+        url: https://fonts.google.com/
+  - title: Icons
+    icon: fad fa-icons
+    links:
+      - title: Flaticon
+        url: https://www.flaticon.com/
+      - title: Font Awesome Icons
+        url: https://fontawesome.com/icons?d=gallery
+  - title: Images
+    icon: fad fa-images
+    links:
+      - title: The stocks
+        url: http://thestocks.im/
+      - title: Photopea | Online Photo Editor
+        url: https://www.photopea.com/
+  - title: Colors
+    icon: fad fa-palette
+    links:
+      - title: Google, but for colors
+        url: https://picular.co/
+      - title: Coolors - color palettes
+        url: https://coolors.co/generate

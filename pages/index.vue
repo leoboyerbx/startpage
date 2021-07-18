@@ -29,7 +29,8 @@ export default {
     Search
   },
   async asyncData(ctx) {
-    const categories = await ctx.$content('toolsCategories').fetch()
+    const tools = await ctx.$content('tools').fetch()
+    const categories = tools.categories
     if (process.server && !ctx.isDev) {
       for (const category of categories) {
         for (const link of category.links) {
