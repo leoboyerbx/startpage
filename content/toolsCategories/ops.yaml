@@ -1,0 +1,10 @@
+slug: ops
+name: Ops
+icon: fad fa-server
+links:
+  - title: Crontab.guru - The cron schedule expression editor
+    url: https://crontab.guru/
+  - title: explainshell.com - Explain a shell command
+    url: https://explainshell.com/
+  - title: ".htaccess tester"
+    url: https://htaccess.madewithlove.be/

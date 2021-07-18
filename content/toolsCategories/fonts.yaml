@@ -1,0 +1,8 @@
+slug: fonts
+name: Fonts
+icon: fad fa-font
+links:
+  - title: Transfonter - @font-face generator
+    url: https://transfonter.org/
+  - title: Google Fonts
+    url: https://fonts.google.com/

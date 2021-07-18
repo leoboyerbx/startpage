@@ -6,7 +6,7 @@
     </header>
     <main ref="listWrapper" :style="{ maxHeight: maxHeight + 'px' }"
           class="overflow-hidden transition-all duration-300">
-      <div ref="list" class="flex flex-wrap justify-around gap-x-4 gap-y-8 py-4">
+      <div ref="list" class="flex flex-wrap gap-x-4 gap-y-8 py-4">
         <ToolItem
           v-for="link in category.links" :key="link.url"
           :link="link"/>
