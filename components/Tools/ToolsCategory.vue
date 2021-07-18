@@ -1,32 +1,32 @@
 <template>
-  <article class="bg-white shadow-th-sm rounded-lg w-full overflow-hidden dark:bg-gray-800">
-    <header class="py-3 px-4 text-gray-700 dark:text-gray-300 shadow">
-      <h3 class="text-xl"><i :class="category.icon" class="mr-2 inline-block transform scale-75"></i>{{ category.name }}</h3>
+  <article class="w-full">
+    <header class="py-3 px-4 border-b border-yeleo dark:border-yeleo-light text-gray-700 dark:text-gray-300">
+      <h3 class="text-xl"><i :class="category.icon" class="mr-2 fa-lg inline-block transform scale-75"></i>{{ category.name }}
+      </h3>
     </header>
-    <main ref="listWrapper" :style="{ maxHeight: maxHeight + 'px' }" class="overflow-y-scroll no-scrollbar transition-all duration-300">
-      <div ref="list">
-        <a
-          v-for="link in category.links"
-          :key="link.url"
-          :href="link.url"
-          target="_blank"
-          class="flex items-center p-2 text-gray-800 dark:text-gray-300"
-          :title="link.title"
-        >
-          <img :src="link.customIcon || link.icon || require('~/assets/img/globe.svg')" alt="fav" style="width: 16px; height: 16px;" class="ml-2">
-          <span class="truncate mx-2">{{ link.title }}</span>
-        </a>
+    <main ref="listWrapper" :style="{ maxHeight: maxHeight + 'px' }"
+          class="overflow-hidden transition-all duration-300">
+      <div ref="list" class="flex flex-wrap justify-around gap-x-4 gap-y-8 py-4">
+        <ToolItem
+          v-for="link in category.links" :key="link.url"
+          :link="link"/>
       </div>
     </main>
-    <footer v-if="category.links.length > 5" class="border-t border-gray-20 dark:border-gray-700 p-2 flex justify-center items-center text-gray-700 dark:text-gray-300 cursor-pointer" @click.prevent="extended = !extended">
-      <i class="fas fa-chevron-down fa-2x transition duration-300 transform" :class="{ 'rotate-180': extended }"></i>
+    <footer v-if="category.links.length > 5"
+            class="p-2 flex items-center text-yeleo dark:text-yeleo-light cursor-pointer gap-2"
+            @click.prevent="extended = !extended">
+      <i class="fas fa-chevron-down transition duration-300 transform" :class="{ 'rotate-180': extended }"></i>
+      <span>{{ !extended ? 'See all...' : 'See less' }}</span>
     </footer>
   </article>
 </template>
 
 <script>
+import ToolItem from '~/components/Tools/ToolItem'
+
 export default {
   name: 'ToolsCategory',
+  components: {ToolItem},
   props: {
     category: {
       type: Object,
@@ -34,17 +34,46 @@ export default {
     }
   },
   data: () => ({
-    initialHeight: 200,
-    extended: false
+    initialHeight: 136,
+    extended: false,
+    resizeUpdate: 0
   }),
   computed: {
-    maxHeight () {
+    maxHeight() {
+      // eslint-disable-next-line no-unused-expressions
+      this.resizeUpdate;
       if (this.extended) {
         return this.$refs.list.offsetHeight
       } else {
         return this.initialHeight
       }
+    },
+  },
+  beforeMount() {
+    window.addEventListener("resize", this.onResize.bind(this));
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onResize.bind(this));
+  },
+  methods: {
+    onResize () {
+      this.resizeUpdate++
     }
   }
 }
 </script>
+<style scoped>
+
+/*header {*/
+/*  position: relative;*/
+/*}*/
+/*header::after {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  left: 1rem;*/
+/*  right: 1rem;*/
+/*  bottom: 0;*/
+/*  height: 1px;*/
+/*  @apply bg-gray-400;*/
+/*}*/
+</style>

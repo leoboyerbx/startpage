@@ -1,9 +1,30 @@
 slug: dev
 name: Dev
-icon: fas fa-laptop-code
+icon: fad fa-laptop-code
 links:
-  - url: https://htaccess.madewithlove.be/
-    title: .htaccess tester
-    icon: /img/htaccess.svg
-  - url: https://repl.it/
-    title: Repl.it - The collaborative browser based IDE
+  - title: DevTools.best - Most frequent used dev tools
+    url: https://devtools.best/
+  - title: Repl.it - The collaborative browser based IDE
+    url: https://repl.it/
+  - title: CODELF - search for variable name
+    url: https://unbug.github.io/codelf/
+  - title: Semver checker
+    url: https://jubianchi.github.io/semver-check/
+  - title: BundlePhobia ❘ cost of adding a npm package
+    url: https://bundlephobia.com/
+  - title: Regex101
+    url: https://regex101.com/
+  - title: JSON Editor Online
+    url: https://jsoneditoronline.org/
+  - title: CodePen
+    url: https://codepen.io/
+  - title: CodeSandbox
+    url: https://codesandbox.io/
+  - title: Learn X in Y Minutes
+    url: https://learnxinyminutes.com/
+  - title: Devhints — TL;DR for developer documentation
+    url: https://devhints.io/
+  - title: DevDocs
+    url: https://devdocs.io/
+  - title: Refactoring Guru
+    url: https://refactoring.guru/

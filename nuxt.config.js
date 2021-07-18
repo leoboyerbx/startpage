@@ -1,6 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+  // ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -17,10 +18,10 @@ export default {
     link: [
       { rel: 'icon', type: 'image/png', href: '/icon.png' },
       { rel: 'stylesheet', href: 'https://use.typekit.net/mkm0xzt.css' },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css',
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css',
+      // },
     ],
   },
 

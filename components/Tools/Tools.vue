@@ -2,9 +2,9 @@
   <section class="my-5">
     <header class="flex flex-row justify-between items-center">
       <h2 class="text-4xl font-bold text-gray-700 dark:text-gray-100"><i
-        class="fas fa-wdsrench transform scale-75 inline-block mr-2"></i>Tools</h2>
+        class="fas fa-wdsrench transform scale-75 inline-block mr-2"></i>Useful tools</h2>
     </header>
-    <main class="my-5 grid gap-x-4 gap-y-6 items-start" :class="gridClass">
+    <main class="my-5">
       <ToolsCategory v-for="category in categories" :key="category.slug" :category="category"/>
     </main>
   </section>

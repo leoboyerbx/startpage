@@ -9,11 +9,11 @@
     <section class="flex flex-row items-center">
       <button tabindex="0" type="submit" class="ml-5 focus:outline-none hover:text-yeleo focus:text-yeleo transition-colors"><i class="fas fa-search"></i></button>
       <input
+        v-model="query"
         tabindex="1"
         autofocus
         type="text"
         class="mx-4 flex-grow focus:outline-none pt-2 pb-3 text-gray-800 font-light"
-        v-model="query"
         @input="updateQuery"
       >
       <div class="mr-5 text-sm text-gray-300 hidden pointer-events-none select-none sm:block">
@@ -46,13 +46,6 @@ import googleSuggestApi from '@/api/googleSuggestApi'
 
 export default {
   name: 'Search',
-  data: () => ({
-    query: '',
-    baseQuery: '',
-    suggestions: [],
-    selectedSuggestion: null,
-    hideSuggestions: false,
-  }),
   props: {
     hasAnswers: {
       type: Boolean,
@@ -64,12 +57,13 @@ export default {
       default: () => ([]),
     },
   },
-  watch: {
-    query (newVal) {
-      this.$emit('update', newVal)
-      this.hideSuggestions = false
-    }
-  },
+  data: () => ({
+    query: '',
+    baseQuery: '',
+    suggestions: [],
+    selectedSuggestion: null,
+    hideSuggestions: false,
+  }),
   computed: {
     queryToSubmit () {
       if (this.selectedSuggestion === null) {
@@ -79,6 +73,12 @@ export default {
       } else {
         return this.suggestions[this.selectedSuggestion]
       }
+    }
+  },
+  watch: {
+    query (newVal) {
+      this.$emit('update', newVal)
+      this.hideSuggestions = false
     }
   },
   methods: {
@@ -184,7 +184,9 @@ export default {
 }
 
 .search-bar {
-  @apply flex flex-col search-input flex-grow text-lg text-gray-500 border border-gray-200 transition-all overflow-hidden max-w-3xl mx-auto bg-white;
+  @apply flex flex-col flex-grow text-lg text-gray-500 border border-gray-200 transition-all overflow-hidden max-w-3xl mx-auto bg-white;
+  border-radius: 25px;
+  min-height: 50px;
 }
 .search-bar:hover, .search-bar:focus-within {
   box-shadow:  0 0 25px rgba(0, 0, 0, 0.15);

@@ -17,18 +17,23 @@
 </template>
 
 <script>
+import '@/assets/fontawesome/css/all.min.css';
+
 import Tools from '~/components/Tools/Tools'
 import getFavicon from '~/helpers/getFavicon'
+
 export default {
   components: {
     Tools
   },
   async asyncData(ctx) {
     const categories = await ctx.$content('toolsCategories').fetch()
-    for (const category of categories) {
-      for (const link of category.links) {
-        if (!link.icon) {
-          link.icon = await getFavicon(link.url)
+    if (process.server && !ctx.isDev) {
+      for (const category of categories) {
+        for (const link of category.links) {
+          if (!link.icon) {
+            link.icon = await getFavicon(link.url)
+          }
         }
       }
     }
@@ -59,6 +64,7 @@ body {
   padding: 0;
   height: 100%;
   overflow-y: scroll;
+  /*--fa-secondary-color: theme('colors.yeleo.DEFAULT');*/
 }
 
 #app {
