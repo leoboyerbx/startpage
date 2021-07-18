@@ -8,6 +8,7 @@ categories:
         url: https://repl.it/
       - title: CODELF - search for variable name
         url: https://unbug.github.io/codelf/
+        icon: https://unbug.github.io/codelf/images/codelf_logo.f4ae25bd.png
       - title: Semver checker
         url: https://jubianchi.github.io/semver-check/
       - title: BundlePhobia ❘ cost of adding a npm package
@@ -35,9 +36,8 @@ categories:
         url: https://crontab.guru/
       - title: explainshell.com - Explain a shell command
         url: https://explainshell.com/
-      - title: ".htaccess tester"
+      - title: .htaccess tester
         url: https://htaccess.madewithlove.be/
-
   - title: Fonts
     icon: fad fa-font
     links:
