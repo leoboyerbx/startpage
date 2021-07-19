@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'startpage',
+    title: 'Start !',
     htmlAttrs: {
       lang: 'en',
     },
@@ -16,6 +16,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
+      // { rel: 'icon', href: '/favicon.ico' },
       { rel: 'icon', type: 'image/png', href: '/icon.png' },
       { rel: 'stylesheet', href: 'https://use.typekit.net/mkm0xzt.css' },
       // {
