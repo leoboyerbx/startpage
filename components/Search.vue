@@ -16,7 +16,7 @@
         class="mx-4 flex-grow focus:outline-none pt-2 pb-3 text-gray-800 font-light"
         @input="updateQuery"
       >
-      <div class="mr-5 text-sm text-gray-300 hidden pointer-events-none select-none sm:block transition duration-200" :class="{'translate-x-5': grepLoading}">
+      <div class="mr-5 text-sm text-gray-300 hidden pointer-events-none select-none sm:block transition transform duration-200" :class="{'translate-x-5': !grepLoading}">
         <span class=" transition-all duration-200" :class="{ 'text-yeleo': query.length > 0 }">
           <span class="keyhint transition-all duration-200" :class="{ 'border-transparent bg-yeleo text-white': query.length > 0 }">ENTER</span> to search,
         </span>
