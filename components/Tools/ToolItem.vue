@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     icon() {
-      return this.link.customIcon || this.link.icon || (require(this.$store.state.darkTheme ? '~/assets/img/globe-white.svg' : '~/assets/img/globe.svg'))
+      return this.link.customIcon || this.link.icon || (require(this.$store.getters.dark ? '~/assets/img/globe-white.svg' : '~/assets/img/globe.svg'))
     }
   }
 }
