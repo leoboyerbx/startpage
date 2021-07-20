@@ -41,6 +41,9 @@ export const mutations = {
     localStorage.setItem('theme', 'system')
     state.darkTheme = null
   },
+  setAutoFocus(state, set) {
+    state.focusWhenVisible = set
+  }
 }
 
 export const actions = {}
