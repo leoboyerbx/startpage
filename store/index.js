@@ -1,11 +1,8 @@
 export const state = () => ({
-  gridDisplay: true,
-  gridCols: 4,
-  maxCols: 4,
-  minCols: 2,
   darkTheme: null,
   matchedDarkTheme: false,
   themeTransition: false,
+  focusWhenVisible: true,
 })
 export const getters = {
   dark(state) {

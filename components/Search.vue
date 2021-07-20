@@ -9,6 +9,7 @@
     <section class="flex flex-row items-center">
       <button tabindex="0" type="submit" class="ml-5 focus:outline-none hover:text-yeleo focus:text-yeleo transition-colors"><i class="fas fa-search"></i></button>
       <input
+        ref='input'
         v-model="query"
         tabindex="1"
         autofocus
@@ -160,6 +161,9 @@ export default {
     },
     getIconForLink(link) {
         return link.customIcon || link.icon || (require(this.$store.state.darkTheme ? '~/assets/img/globe-white.svg' : '~/assets/img/globe.svg'))
+    },
+    focus() {
+      this.$refs.input.focus()
     }
   }
 }

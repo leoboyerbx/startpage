@@ -4,7 +4,7 @@
       <header class="mx-auto mt-10 pt-10 content-center relative z-10">
         <h1 class="font-bold text-center w-auto text-yeleo text-8xl mb-10 dark:text-yeleo-light">...start !</h1>
         <section class="search-wrapper">
-          <Search :has-answers="hasAnswers" :grep-loading="isGrepperLoading" :tools="tools" @update="searchQuery = $event; hasAnswers = false" />
+          <Search ref='search' :has-answers="hasAnswers" :grep-loading="isGrepperLoading" :tools="tools" @update="searchQuery = $event; hasAnswers = false" />
         </section>
       </header>
       <main class="my-10">
@@ -54,6 +54,12 @@ export default {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     };
   },
+  beforeMount() {
+    document.addEventListener('visibilitychange', this.onVisibilityChange.bind(this))
+  },
+  destroyed() {
+    document.removeEventListener('visibilitychange', this.onVisibilityChange.bind(this))
+  },
   computed: {
     dark () {
       return this.$store.getters.dark
@@ -62,6 +68,13 @@ export default {
       const tools = []
       this.categories.forEach(category => category.links.forEach(link => tools.push(link)))
       return tools
+    },
+  },
+  methods: {
+    onVisibilityChange () {
+      if (document.visibilityState === 'visible' && this.$store.state.focusWhenVisible) {
+        this.$refs.search.focus()
+      }
     }
   }
 }
